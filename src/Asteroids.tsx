@@ -11,7 +11,7 @@ function Asteroids() {
         const backgroundMusic = document.getElementById('backgroundMusic') as HTMLAudioElement;
         if (backgroundMusic) {
             backgroundMusic.play().catch(() => {
-                document.addEventListener('mousemove', () => {
+                document.addEventListener('click', () => {
                     backgroundMusic.play();
                 });
             });
