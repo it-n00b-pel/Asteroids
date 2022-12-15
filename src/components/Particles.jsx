@@ -171,9 +171,14 @@ const ParticlesComponent = () => {
                         options: {
                             images: [
                                 {
-                                    src: "https://particles.js.org/images/amongus_blue.png",
+                                    src: "https://www.svgrepo.com/show/18998/meteorite.svg",
                                     width: 205,
                                     height: 267,
+                                },
+                                {
+                                    src: "https://www.svgrepo.com/show/18998/meteorite.svg",
+                                    width: 150,
+                                    height: 150,
                                 },
                                 {
                                     src: "https://particles.js.org/images/amongus_cyan.png",

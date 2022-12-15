@@ -1,0 +1,48 @@
+.searchParameters {
+  .dataRange {
+    width: 300px;
+
+    label {
+      color: white;
+    }
+
+    div {
+
+      background-color: rgba(0, 0, 0, 0);
+
+      input {
+        background: rgba(0, 0, 0, 0);
+        color: white;
+      }
+
+      button {
+        color: white;
+        background-color: rgba(0, 0, 0, 0.7);
+      }
+
+      button[data-in-range] {
+        background-color: rgba(255, 0, 0, 0.5);
+      }
+
+      button[data-weekend] {
+        color: red;
+      }
+
+      button[data-outside] {
+        color: #bbbbbb;
+      }
+
+      button:hover {
+        background-color: rgb(255, 255, 255);
+        border-radius: 4px;
+        color: black;
+      }
+
+      button[data-selected] {
+        background-color: #ffffff;
+        color: black;
+      }
+
+    }
+  }
+}

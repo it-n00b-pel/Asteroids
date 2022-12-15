@@ -4,6 +4,10 @@
   "private": true,
   "homepage": "https://it-n00b-pel.github.io/Asteroids",
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@mantine/core": "^5.9.4",
+    "@mantine/dates": "^5.9.4",
+    "@mantine/hooks": "^5.9.4",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
@@ -12,6 +16,7 @@
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "axios": "^1.2.1",
+    "dayjs": "^1.11.7",
     "gh-pages-deploy": "^0.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

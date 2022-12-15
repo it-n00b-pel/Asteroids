@@ -4,6 +4,7 @@ import './Asteroids.css';
 
 import Particles from './components/Particles';
 import HeaderContainer from './components/Header/HeaderContainer';
+import SearchParametersContainer from './components/SearchParameters/SearchParametersContainer';
 
 function Asteroids() {
     const audioSrc = require('../src/assets/audio/zvezdnye-voyny-p-yanyy-dart-veyder.mp3');
@@ -22,6 +23,7 @@ function Asteroids() {
         <>
             <div className="Asteroids">
                 <HeaderContainer/>
+                <SearchParametersContainer/>
             </div>
             <div id="particles-js"><Particles/></div>
             <audio id="backgroundMusic" loop>
