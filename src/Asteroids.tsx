@@ -23,9 +23,14 @@ function Asteroids() {
     return (
         <>
             <div className="Asteroids">
-                <HeaderContainer/>
-                <SearchParametersContainer/>
+                <div id="main"></div>
+                <div className="stickyBlock">
+                    <HeaderContainer/>
+                    <SearchParametersContainer/>
+                </div>
+
                 <AsteroidsContainer/>
+
             </div>
             <div id="particles-js"><Particles/></div>
             <audio id="backgroundMusic" loop>

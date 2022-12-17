@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {DateRangePicker} from '@mantine/dates';
 
 import {useMediaQuery} from '@mantine/hooks';
@@ -45,8 +45,7 @@ const SearchParametersContainer: React.FC = () => {
         setUnits(e as 'kilometers' | 'miles');
     };
 
-    const changeHazardousHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        console.log(e);
+    const changeHazardousHandler = () => {
         dispatch(changeHazardousFilter({hazardous: !hazardous}));
         setHazardous(!hazardous);
     };
@@ -83,30 +82,31 @@ const SearchParametersContainer: React.FC = () => {
                 disabled={isLoading}
             />
 
-            <Radio.Group
-                name="favoriteFramework"
-                label="Select units"
-                spacing="sm"
-                className={style.radioGroup}
-                value={units}
-                onChange={changeUnitsHandler}
-            >
-                <Radio disabled={isLoading} value="kilometers" label="Kilometers"/>
-                <Radio disabled={isLoading} value="miles" label="Miles"/>
-            </Radio.Group>
+            <div className={style.radioAndSwitch}>
+                <Radio.Group
+                    name="favoriteFramework"
+                    label="Select units"
+                    spacing="sm"
+                    className={style.radioGroup}
+                    value={units}
+                    onChange={changeUnitsHandler}
+                >
+                    <Radio disabled={isLoading} value="kilometers" label="Kilometers"/>
+                    <Radio disabled={isLoading} value="miles" label="Miles"/>
+                </Radio.Group>
 
-            <Group position="center">
-                <Switch
-                    disabled={isLoading}
-                    size="lg"
-                    color={theme.colorScheme = 'dark'}
-                    onLabel={<IconClearAll size={22} stroke={2.5} color={theme.colors.green[6]}/>}
-                    offLabel={<IconComet size={22} stroke={2.5} color={theme.colors.red[6]}/>}
-                    style={{fontSize: '22px'}}
-                    onChange={changeHazardousHandler}
-                />
-
-            </Group>
+                <Group position="center">
+                    <Switch
+                        disabled={isLoading}
+                        size="lg"
+                        color={theme.colorScheme = 'dark'}
+                        onLabel={<IconClearAll size={22} stroke={2.5} color={theme.colors.green[6]}/>}
+                        offLabel={<IconComet size={22} stroke={2.5} color={theme.colors.red[6]}/>}
+                        style={{fontSize: '22px'}}
+                        onChange={changeHazardousHandler}
+                    />
+                </Group>
+            </div>
         </div>
     );
 };

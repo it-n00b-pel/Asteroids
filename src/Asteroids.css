@@ -3,10 +3,26 @@
     margin: 0 auto;
 }
 
+@media screen and (max-width: 500px) {
+    .Asteroids {
+        width: 100%;
+    }
+}
+
+.stickyBlock {
+    position: sticky;
+    top: 0;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 10 !important;
+    border-radius: 10px;
+    box-shadow: 0 0 30px 10px #050000;
+}
+
 #particles-js {
     position: absolute;
     width: 100%;
-    height: 100%;
+    /*height: 50%;*/
     z-index: -1 !important;
 }
 
