@@ -93,8 +93,6 @@ const Asteroid: React.FC<AsteroidPropsType> = ({asteroid}) => {
             <div className={st}>
                 <img src={bruce} alt="" style={{width: 270}}/>
             </div>
-
-
         </Card>
 
     );
