@@ -1,14 +1,14 @@
-import axios from 'axios';
+import axios, {AxiosResponse} from 'axios';
 
 const api_key = 'tSadAmd1TDF3FTTx1FqWVCyipcmhfEMZg4dITlv3';
 
 export const nasaApi = {
-    getAsteroids(start_date: string, end_date: string) {
+    getAsteroids(start_date: string, end_date: string): Promise<AxiosResponse<AsteroidsResponseType>> {
         return axios.get<AsteroidsResponseType>(`https://api.nasa.gov/neo/rest/v1/feed?`, {params: {start_date, end_date, api_key}});
     },
 };
 
-type AsteroidsResponseType = {
+export type AsteroidsResponseType = {
     links: Links,
     element_count: number,
     near_earth_objects: {
@@ -16,13 +16,13 @@ type AsteroidsResponseType = {
     }
 }
 
-type Links = {
+export type Links = {
     next: string,
     previous: string,
     self: string,
 }
 
-type AsteroidType = {
+export type AsteroidType = {
     links: {
         self: string,
     },

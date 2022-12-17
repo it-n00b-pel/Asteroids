@@ -5,9 +5,9 @@ import Header from './Header';
 const HeaderContainer: React.FC = () => {
 
     return (
-        <div>
+
             <Header/>
-        </div>
+
     );
 };
 

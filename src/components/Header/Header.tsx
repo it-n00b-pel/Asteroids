@@ -6,7 +6,7 @@ const Header: React.FC = () => {
     return (
         <div className={style.header}>
             <div className={style.toolbar}>
-                <a href="">NeoWs</a>
+                <a href="#sss">NeoWs</a>
                 <h3>Near Earth Object Web Service</h3>
                 <div className={style.basket}>
 

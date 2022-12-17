@@ -1,4 +1,9 @@
 .searchParameters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 50px;
+  max-width: 700px;
   .dataRange {
     width: 300px;
 
@@ -21,7 +26,7 @@
       }
 
       button[data-in-range] {
-        background-color: rgba(255, 0, 0, 0.5);
+        background-color: rgba(255, 0, 0, 0.71);
       }
 
       button[data-weekend] {
@@ -43,6 +48,12 @@
         color: black;
       }
 
+    }
+  }
+  .radioGroup{
+    width: 175px;
+    div{
+      color: white;
     }
   }
 }
