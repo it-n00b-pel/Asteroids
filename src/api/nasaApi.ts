@@ -1,11 +1,14 @@
 import axios, {AxiosResponse} from 'axios';
 
 // const api_key = (process.env.REACT_APP_API_KEY as string).substring(1, (process.env.REACT_APP_API_KEY as string).length - 2);
-const api_key = "tSadAmd1TDF3FTTx1FqWVCyipcmhfEMZg4dITlv3"
+const api_key = 'tSadAmd1TDF3FTTx1FqWVCyipcmhfEMZg4dITlv3';
 
 export const nasaApi = {
     getAsteroids(start_date: string, end_date: string): Promise<AxiosResponse<AsteroidsResponseType>> {
         return axios.get<AsteroidsResponseType>(`https://api.nasa.gov/neo/rest/v1/feed?`, {params: {start_date, end_date, api_key}});
+    },
+    getNewAsteroids(next: string): Promise<AxiosResponse<AsteroidsResponseType>> {
+        return axios.get<AsteroidsResponseType>(next, {params: {api_key}});
     },
 };
 
