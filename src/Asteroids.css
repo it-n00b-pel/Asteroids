@@ -19,6 +19,27 @@
     box-shadow: 0 0 30px 10px #050000;
 }
 
+.blackHole {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.blackHole img {
+    width: 360px;
+    animation: spin 3s linear infinite;
+}
+
 #particles-js {
     position: absolute;
     width: 100%;

@@ -6,7 +6,7 @@ const slice = createSlice({
     name: 'searchParameters',
     initialState: {
         start_date: new Date(),
-        end_date: new Date(today.getTime() + (24 * 60 * 60 * 1000)),
+        end_date: new Date(today.getTime() + (24 * 60 * 60 * 1000)*5),
         units: 'kilometers' as UnitsType,
         hazardous: false,
     },
