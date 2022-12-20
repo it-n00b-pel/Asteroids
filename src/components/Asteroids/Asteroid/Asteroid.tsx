@@ -7,9 +7,12 @@ import danger from '../../../assets/img/dangerAsteroid-100.png';
 import noDanger from '../../../assets/img/noDangerAsteroid-100.png';
 import bruce from '../../../assets/img/BruceW.png';
 
-import {useAppSelector} from '../../../store/store';
+import {useAppDispatch, useAppSelector} from '../../../store/store';
+
+import {addAsteroidToBasket} from '../../../store/reducers/basketReducer';
 
 import style from './Asteroid.module.scss';
+
 
 type AsteroidPropsType = {
     asteroid: AsteroidType
@@ -18,6 +21,7 @@ type AsteroidPropsType = {
 const Asteroid: React.FC<AsteroidPropsType> = ({asteroid}) => {
 
     const units = useAppSelector(state => state.searchParam.units);
+    const dispatch = useAppDispatch();
 
     const diameters = () => {
         switch (units) {
@@ -49,6 +53,7 @@ const Asteroid: React.FC<AsteroidPropsType> = ({asteroid}) => {
     const [st, setStyle] = useState(style.bruce);
 
     const onClickHandler = () => {
+        dispatch(addAsteroidToBasket({asteroid}));
         setStyle(style.bruceStart);
         setTimeout(() => {
             setStyle(style.bruce);
