@@ -25,7 +25,6 @@ const AsteroidsContainer: React.FC = () => {
     const isLoading = useAppSelector(state => state.app.status) === 'loading';
     const dispatch = useAppDispatch();
     const [fetching, setFetching] = useState(false);
-
     let newAsteroids: AsteroidType[] = [];
 
     for (const newAsteroidsKey in near_earth_objects) {
@@ -39,19 +38,22 @@ const AsteroidsContainer: React.FC = () => {
     newAsteroids = hazardousFromStore ? [...newAsteroids].filter(asteroid => asteroid.is_potentially_hazardous_asteroid) : newAsteroids;
 
     const scrollHandler = () => {
-        if (document.body.offsetHeight - (window.scrollY + window.innerHeight) < 100) {
+        const scrollPosition = document.body.offsetHeight - (window.scrollY + window.innerHeight);
+        if (scrollPosition < 100 && scrollPosition > 0) {
             setFetching(true);
         }
     };
 
     useEffect(() => {
-        if (fetching && !hazardousFromStore) {
+        if (fetching) {
             dispatch(fetchNewAsteroids(next));
         }
     }, [fetching]);
 
     useEffect(() => {
-        if (!isLoading) setFetching(false);
+        if (!isLoading) {
+            setFetching(false);
+        }
     }, [isLoading]);
 
     useEffect(() => {

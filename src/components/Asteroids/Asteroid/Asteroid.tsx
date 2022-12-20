@@ -58,7 +58,6 @@ const Asteroid: React.FC<AsteroidPropsType> = ({asteroid}) => {
     const avatar = asteroid.is_potentially_hazardous_asteroid ?
         <img src={danger} alt="danger asteroid"/>
         : <img src={noDanger} alt="no danger asteroid"/>;
-
     return (
 
         <Card className={style.asteroid}>

@@ -34,6 +34,7 @@ const SearchParametersContainer: React.FC = () => {
         if (e[0] && e[1]) {
             days = e[1]?.getDate() - e[0]?.getDate();
             if (days <= 7) {
+                window.document.documentElement.scroll({top: 0, behavior: 'smooth'});
                 dispatch(changeDateFilter({start_date: e[0], end_date: e[1]}));
                 setDate([e[0], e[1]]);
             }
