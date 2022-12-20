@@ -12,11 +12,11 @@
 .stickyBlock {
     position: sticky;
     top: 0;
-    padding: 20px;
+    padding: 15px 10px 10px;
     background-color: rgba(0, 0, 0, 0.9);
     z-index: 10 !important;
     border-radius: 10px;
-    box-shadow: 0 0 30px 10px #050000;
+    box-shadow: 0 0 30px 15px #050000;
 }
 
 .blackHole {
