@@ -1,3 +1,5 @@
+import {AsteroidType} from '../api/nasaApi';
+
 export const loadState = () => {
     try {
         const serializedState = localStorage.getItem('asteroids');
@@ -7,7 +9,7 @@ export const loadState = () => {
     }
 };
 
-export const saveState = (state: any) => {
+export const saveState = (state: { basket: { asteroids: AsteroidType[], totalCount: number } }) => {
     try {
         const serializedState = JSON.stringify(state);
         localStorage.setItem('asteroids', serializedState);

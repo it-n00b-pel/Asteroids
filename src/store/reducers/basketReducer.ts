@@ -11,11 +11,11 @@ const slice = createSlice({
     reducers: {
         addAsteroidToBasket(state, action: PayloadAction<{ asteroid: AsteroidType }>) {
             state.asteroids.push(action.payload.asteroid);
-            state.totalCount++;
+            state.totalCount = state.asteroids.length;
         },
         removeFromBasket(state, action: PayloadAction<{ id: string }>) {
-            state.asteroids.filter(a => a.id !== action.payload.id);
-            state.totalCount--;
+            state.asteroids = state.asteroids.filter(a => a.id !== action.payload.id);
+            state.totalCount = state.asteroids.length;
         },
     },
 });

@@ -1,13 +1,44 @@
 import React from 'react';
 
-import {IconShoppingCart} from '@tabler/icons';
-import {Indicator} from '@mantine/core';
+import {IconShoppingCart, IconTrash} from '@tabler/icons';
+import {Checkbox, Indicator, Modal, Table} from '@mantine/core';
 
 import {Link} from 'react-scroll';
+
+import {useDisclosure} from '@mantine/hooks';
+
+import {useAppDispatch, useAppSelector} from '../../store/store';
+
+import {removeFromBasket} from '../../store/reducers/basketReducer';
 
 import style from './Header.module.scss';
 
 const Header: React.FC = () => {
+    const [opened, {close, open}] = useDisclosure(false);
+    const {totalCount, asteroids} = useAppSelector(state => state.basket);
+    const dispatch = useAppDispatch();
+
+    const ths = (
+        <tr>
+            <th>Name</th>
+            <th>Close approach date</th>
+            <th>Danger</th>
+            <th>Trash</th>
+        </tr>
+    );
+
+    const rows = asteroids.map((element) => (
+        <tr key={element.id}>
+            <td>{element.name}</td>
+            <td>{element.close_approach_data[0].close_approach_date.toString()}</td>
+            <td><Checkbox checked={element.is_potentially_hazardous_asteroid} color="red"/></td>
+            <td onClick={() => onClickHandler(element.id)} style={{cursor: 'pointer'}}><IconTrash color="red"/></td>
+        </tr>
+    ));
+
+    const onClickHandler = (id: string) => {
+        dispatch(removeFromBasket({id}));
+    };
     return (
         <div className={style.header}>
             <div className={style.toolbar}>
@@ -20,12 +51,26 @@ const Header: React.FC = () => {
 
                 <h3>Near Earth Object Web Service</h3>
                 <div className={style.basket}>
-                    <Indicator label={10} showZero={false} dot={false} inline size={16}>
+                    <Indicator onClick={open} label={totalCount} showZero={false} dot={false} inline size={16}>
                         <IconShoppingCart size={'36px'}/>
                     </Indicator>
                 </div>
             </div>
 
+
+            <Modal overlayColor={'rgba(45,45,45,0.44)'}
+                   opened={opened}
+                   centered
+                   onClose={close}
+                   overlayBlur={3}
+                   size="auto"
+                   title="Objects for destruction"
+                   overflow="inside">
+                <Table striped highlightOnHover withBorder>
+                    <thead>{ths}</thead>
+                    <tbody>{rows}</tbody>
+                </Table>
+            </Modal>
 
         </div>
     );

@@ -13,7 +13,6 @@ import {addAsteroidToBasket} from '../../../store/reducers/basketReducer';
 
 import style from './Asteroid.module.scss';
 
-
 type AsteroidPropsType = {
     asteroid: AsteroidType
 }
@@ -21,6 +20,7 @@ type AsteroidPropsType = {
 const Asteroid: React.FC<AsteroidPropsType> = ({asteroid}) => {
 
     const units = useAppSelector(state => state.searchParam.units);
+    const asteroids = useAppSelector(state => state.basket.asteroids);
     const dispatch = useAppDispatch();
 
     const diameters = () => {
@@ -31,6 +31,8 @@ const Asteroid: React.FC<AsteroidPropsType> = ({asteroid}) => {
                 return [asteroid.estimated_diameter.miles.estimated_diameter_min, asteroid.estimated_diameter.miles.estimated_diameter_max];
         }
     };
+
+    const isAsteroidInBasket = asteroids.find(a => a.id === asteroid.id);
 
     const relativeVelocity = () => {
         switch (units) {
@@ -91,7 +93,7 @@ const Asteroid: React.FC<AsteroidPropsType> = ({asteroid}) => {
             <div className={style.someInfo}><h4>Miss distance</h4><span>{missDistance()}</span></div>
 
             <div className={style.firedBtn}>
-                <Button onClick={onClickHandler} variant="gradient" gradient={{from: 'orange', to: 'red'}}>Fired</Button>
+                <Button onClick={onClickHandler} disabled={!!isAsteroidInBasket} variant="gradient" gradient={{from: 'orange', to: 'red'}}>Fired</Button>
             </div>
 
             <div className={st}>
