@@ -146,7 +146,7 @@ const ParticlesComponent = () => {
             },
             // detectRetina: true,
             background: {
-                 color: "#000000",
+                color: "#000000",
                 // image: "",
                 // position: "50% 50%",
                 // repeat: "no-repeat",
@@ -255,7 +255,7 @@ const ParticlesComponent = () => {
         return loadFull(engine)
     }, []);
 
-    return <Particles init={particlesInit} options={options} />;
+    return <Particles init={particlesInit} options={options}/>;
 
 };
 

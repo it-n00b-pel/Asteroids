@@ -1,21 +1,27 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
-import {IconShoppingCart, IconTrash} from '@tabler/icons';
+import {IconShoppingCart, IconTrash, IconX} from '@tabler/icons';
 import {Checkbox, Indicator, Modal, Table} from '@mantine/core';
 
 import {Link} from 'react-scroll';
 
 import {useDisclosure} from '@mantine/hooks';
 
+import {showNotification} from '@mantine/notifications';
+
 import {useAppDispatch, useAppSelector} from '../../store/store';
 
 import {removeFromBasket} from '../../store/reducers/basketReducer';
 
+import {setError} from '../../store/reducers/appReducer';
+
 import style from './Header.module.scss';
+
 
 const Header: React.FC = () => {
     const [opened, {close, open}] = useDisclosure(false);
     const {totalCount, asteroids} = useAppSelector(state => state.basket);
+    const error = useAppSelector(state => state.app.error);
     const dispatch = useAppDispatch();
 
     const ths = (
@@ -31,7 +37,8 @@ const Header: React.FC = () => {
         <tr key={element.id}>
             <td>{element.name}</td>
             <td>{element.close_approach_data[0].close_approach_date.toString()}</td>
-            <td><Checkbox checked={element.is_potentially_hazardous_asteroid} color="red"/></td>
+            <td><Checkbox checked={element.is_potentially_hazardous_asteroid} onChange={() => {
+            }} color="red"/></td>
             <td onClick={() => onClickHandler(element.id)} style={{cursor: 'pointer'}}><IconTrash color="red"/></td>
         </tr>
     ));
@@ -39,6 +46,21 @@ const Header: React.FC = () => {
     const onClickHandler = (id: string) => {
         dispatch(removeFromBasket({id}));
     };
+
+    useEffect(() => {
+        error && showNotification({
+            title: 'Oooops 🤥',
+            message: error,
+            id: 'hello-there',
+            disallowClose: true,
+            onClose: () => dispatch(setError({error: null})),
+            autoClose: 2000,
+            color: 'red',
+            icon: <IconX/>,
+            loading: false,
+        });
+    }, [dispatch, error]);
+
     return (
         <div className={style.header}>
             <div className={style.toolbar}>
@@ -71,7 +93,6 @@ const Header: React.FC = () => {
                     <tbody>{rows}</tbody>
                 </Table>
             </Modal>
-
         </div>
     );
 };

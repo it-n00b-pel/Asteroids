@@ -4,14 +4,22 @@ import {useAppSelector} from '../store/store';
 
 const OnlyScrollPositionHabdler: React.FC = () => {
     const hazardousFromStore = useAppSelector(state => state.searchParam.hazardous);
+    const error = useAppSelector(state => state.app.error);
     const [scrollPosition, setScrollPosition] = useState(0);
 
     const scrollHandler = () => {
         if (window.scrollY) {
             setScrollPosition(window.scrollY);
         }
-
     };
+
+    useEffect(() => {
+        const scroll = document.body.offsetHeight - (window.scrollY + window.innerHeight);
+        if (error && scroll < 100) {
+            window.document.documentElement.scrollIntoView({block: 'start'});
+        }
+    }, [error]);
+
     useEffect(() => {
         if (hazardousFromStore) {
             window.document.documentElement.scrollIntoView({block: 'start'});

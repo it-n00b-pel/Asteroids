@@ -13,6 +13,8 @@ import {fetchAsteroids} from '../../store/saga/asteroidSaga';
 
 import {changeDateFilter, changeHazardousFilter, changeUnitsFilter, UnitsType} from '../../store/reducers/searchParametersReducer';
 
+import {setError} from '../../store/reducers/appReducer';
+
 import style from './SearchParameters.module.scss';
 
 const SearchParametersContainer: React.FC = () => {
@@ -33,10 +35,12 @@ const SearchParametersContainer: React.FC = () => {
         let days = 0;
         if (e[0] && e[1]) {
             days = e[1]?.getDate() - e[0]?.getDate();
-            if (days <= 7) {
+            if (days <= 7 && days > 0) {
                 window.document.documentElement.scroll({top: 0, behavior: 'smooth'});
                 dispatch(changeDateFilter({start_date: e[0], end_date: e[1]}));
                 setDate([e[0], e[1]]);
+            } else {
+                dispatch(setError({error: 'Max 7 days'}));
             }
         }
     };
