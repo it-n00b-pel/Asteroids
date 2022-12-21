@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/Asteroids/static/css/main.5a5055db.css",
-    "main.js": "/Asteroids/static/js/main.a3a8a16c.js",
+    "main.js": "/Asteroids/static/js/main.5a294370.js",
     "static/js/787.9ab574ee.chunk.js": "/Asteroids/static/js/787.9ab574ee.chunk.js",
     "static/media/zvezdnye-voyny-p-yanyy-dart-veyder.mp3": "/Asteroids/static/media/zvezdnye-voyny-p-yanyy-dart-veyder.e5db4fd9129e1dee997d.mp3",
     "static/media/BruceW.png": "/Asteroids/static/media/BruceW.3abc5afbe763b9315353.png",
     "index.html": "/Asteroids/index.html",
     "main.5a5055db.css.map": "/Asteroids/static/css/main.5a5055db.css.map",
-    "main.a3a8a16c.js.map": "/Asteroids/static/js/main.a3a8a16c.js.map",
+    "main.5a294370.js.map": "/Asteroids/static/js/main.5a294370.js.map",
     "787.9ab574ee.chunk.js.map": "/Asteroids/static/js/787.9ab574ee.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5a5055db.css",
-    "static/js/main.a3a8a16c.js"
+    "static/js/main.5a294370.js"
   ]
 }
